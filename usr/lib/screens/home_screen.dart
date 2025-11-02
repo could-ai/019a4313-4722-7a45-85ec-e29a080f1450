@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void _deleteEntry(String id) async {
+  void _deleteEntry(int id) async {
     await _entryService.deleteEntry(id);
     _loadEntries();
     if (mounted) {
@@ -69,10 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
             itemBuilder: (context, index) {
               final entry = entries[index];
               return Dismissible(
-                key: Key(entry.id),
+                key: ValueKey(entry.id),
                 direction: DismissDirection.endToStart,
                 onDismissed: (direction) {
-                  _deleteEntry(entry.id);
+                  _deleteEntry(entry.id!);
                 },
                 background: Container(
                   color: Colors.red,

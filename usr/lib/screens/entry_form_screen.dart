@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 import '../models/entry_model.dart';
 import '../services/entry_service.dart';
 
@@ -41,7 +40,7 @@ class _EntryFormScreenState extends State<EntryFormScreen> {
   void _saveEntry() async {
     if (_formKey.currentState!.validate()) {
       final entry = Entry(
-        id: _isNewEntry ? Random().nextInt(10000).toString() : widget.entry!.id,
+        id: _isNewEntry ? null : widget.entry!.id,
         description: _descriptionController.text,
         rating: _rating,
         solution: _solutionController.text,
